@@ -94,6 +94,42 @@ If the URL can't be fetched (some job portals block automated access), you can p
 
 This runs the full workflow: evaluate fit, draft CV + cover letter, review with a second agent, revise, and present the final output.
 
+## Gemini / Antigravity CLI Setup
+
+If you are using the **Google Antigravity CLI** (`agy` / `gemini`) instead of Claude Code, follow these steps to install and run the framework:
+
+### 1. Prerequisites
+- [Google Antigravity CLI](https://antigravity.google/docs) (`agy`)
+- Python 3.10+
+- [Bun](https://bun.sh)
+- LaTeX distribution (`lualatex` and `xelatex`)
+
+### 2. Fork, clone, and install search tools
+Same as the Claude Code quickstart, fork and clone the repository, then install the job search tools:
+```bash
+cd .agents/skills/jobbank-search/cli && bun install && cd ../../../..
+cd .agents/skills/jobdanmark-search/cli && bun install && cd ../../../..
+cd .agents/skills/jobindex-search/cli && bun install && cd ../../../..
+cd .agents/skills/jobnet-search/cli && bun install && cd ../../../..
+cd .agents/skills/linkedin-search/cli && bun install && cd ../../../..
+```
+
+### 3. Set up your profile
+Instead of running `claude`, run `agy` in your terminal:
+```bash
+agy
+# Then inside Antigravity CLI:
+/setup
+```
+
+### 4. Run the workflow
+All slash commands and custom skills operate identically inside `agy-cli`:
+- **Search for jobs**: `/scrape`
+- **Apply to a job**: `/apply <url_or_pasted_text>`
+- **Additional commands**: `/expand`, `/upskill`, `/add-template`, `/add-portal`, `/reset`
+
+All workspace-specific agent guidelines and custom skills for Antigravity are configured under `.agents/` and `.agents/AGENTS.md`.
+
 ## Other commands
 
 `/setup`, `/scrape`, and `/apply` form the core workflow. Four more commands extend it once your profile is in place:
